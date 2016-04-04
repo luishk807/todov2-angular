@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-1.6.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-resource.min.js"></script>
+	<script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+	<script src="js/todo-angular.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-app="todoApp">
+		<div ng-controller="todoCtrl" ng-init="dFilter='all'">
+			<div>
+				<input placeholder="tell me your task" ng-keyup="$event.keyCode==13?addList():null" type="text" class="inputc" ng-model="inputnm" name="input-list"/>
+			</div>
+			<div class="list-pnl">
+				<ul>
+					<li ng-repeat="t_list in t_lists | filter:cFilter track by $index">
+						<input type="checkbox" ng-checked="t_list.comp" ng-click="setComplete($index)"/>
+						<span ng-class="{'complete':t_list.comp}">{{ t_list.name }}</span> 
+						[<a href="#" ng-click='removeLists($index)'>x</a>]
+					</li>
+				</ul>
+				<ul class="list-menu">
+					<li><ng-pluralize count="taskLeft" when="{'0':'No tasks','1':'1 task left','other':'{} tasks left'}"></ng-pluralize></li>
+					<li>
+						<ul>
+							<li><input type="radio" name="filterComp" ng-click="setFilter('all')" checked/>&nbsp;All</li>
+							<li><input type="radio" name="filterComp" ng-click="setFilter('act')"/>&nbsp;Active</li>
+							<li><input type="radio" name="filterComp" ng-click="setFilter('comp')"/>&nbsp;Completed</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
