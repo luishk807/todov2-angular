@@ -1,0 +1,16 @@
+.complete {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.list-pnl ul {
+  list-style: none;
+  margin: 0px;
+  padding: 5px 0px;
+}
+
+.inputc {
+  width: 300px;
+  font-size: 1.2em;
+  font-family: Arial;
+}
